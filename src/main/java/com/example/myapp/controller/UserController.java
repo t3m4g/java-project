@@ -16,19 +16,19 @@ public class UserController {
     private UserService userService;
 
     // Route: POST /api/users
-    @PostMapping
+    @PostMapping("/create_user")
     public User addUser(@RequestBody User user) {
         return userService.addUser(user);
     }
 
     // Route: GET /api/users
-    @GetMapping
+    @GetMapping("/show_all_users")
     public List<User> showAllUsers() {
         return userService.showAllUsers();
     }
 
     // Route: GET /api/users/{id}
-    @GetMapping("/{id}")
+    @GetMapping("/show_user/{id}")
     public Optional<User> showUser(@PathVariable Long id) {
         return userService.showUser(id);
     }
@@ -40,13 +40,13 @@ public class UserController {
     }
 
     // Route: PUT /api/users/{id}
-    @PutMapping("/{id}")
+    @PutMapping("/update_user/{id}")
     public User updateUser(@PathVariable Long id, @RequestBody User userDetails) {
         return userService.updateUser(id, userDetails);
     }
 
     // Route: DELETE /api/users/{id}
-    @DeleteMapping("/{id}")
+    @DeleteMapping("/delete_user/{id}")
     public void deleteUser(@PathVariable Long id) {
         userService.deleteUser(id);
     }
