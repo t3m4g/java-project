@@ -3,6 +3,7 @@ package com.example.myapp.controller;
 import com.example.myapp.entity.User;
 import com.example.myapp.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
@@ -26,6 +27,12 @@ public class UserController {
     public List<User> showAllUsers() {
         return userService.showAllUsers();
     }
+//    public String showAllUsers(Model model) {
+//        List<User> users = userService.showAllUsers();
+//        System.out.println("Utilisateurs envoyés au frontend : " + users);
+//        model.addAttribute("users", users);
+//        return "users/list";
+//    }
 
     // Route: GET /api/users/{id}
     @GetMapping("/show_user/{id}")

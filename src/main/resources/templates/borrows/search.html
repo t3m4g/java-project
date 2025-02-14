@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html xmlns:th="http://www.thymeleaf.org">
+<head>
+    <meta charset="UTF-8">
+    <title>Rechercher des Emprunts</title>
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+</head>
+<body>
+<div class="container mt-5">
+    <h1>Rechercher des Emprunts</h1>
+    <form th:action="@{/borrows/search}" method="get">
+        <div class="mb-3">
+            <label for="userId" class="form-label">ID Utilisateur</label>
+            <input type="number" class="form-control" id="userId" name="userId">
+        </div>
+        <div class="mb-3">
+            <label for="bookId" class="form-label">ID Livre</label>
+            <input type="number" class="form-control" id="bookId" name="bookId">
+        </div>
+        <button type="submit" class="btn btn-primary">Rechercher</button>
+    </form>
+
+    <div th:if="${borrows != null}" class="mt-4">
+        <h2>Résultats de la recherche</h2>
+        <table class="table">
+            <thead>
+            <tr>
+                <th>ID</th>
+                <th>Utilisateur</th>
+                <th>Livre</th>
+                <th>Statut</th>
+            </tr>
+            </thead>
+            <tbody>
+            <tr th:each="borrow : ${borrows}">
+                <td th:text="${borrow.id}"></td>
+                <td th:text="${borrow.user.nom}"></td>
+                <td th:text="${borrow.book.titre}"></td>
+                <td th:text="${borrow.status}"></td>
+            </tr>
+            </tbody>
+        </table>
+    </div>
+</div>
+</body>
+</html>
